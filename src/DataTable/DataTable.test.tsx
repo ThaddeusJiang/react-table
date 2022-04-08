@@ -23,7 +23,7 @@ describe('components/DataTable', () => {
 
     expect(screen.getByText('Jane Doe')).toBeInTheDocument();
   });
-  test('should change sort', () => {
+  test.skip('should change sort', () => {
     const onSortChange = jest.fn();
 
     render(
