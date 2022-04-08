@@ -1,4 +1,17 @@
-# TSDX React w/ Storybook User Guide
+# React Advanced Table
+
+## features
+
+- [ ] Nested Data Table
+- [ ] Keyword Search
+- [ ] Columns Setting
+- [ ] Filter Setting
+- [ ] Sort Setting
+- [ ] DnD changed Columns width and array
+
+
+ref: [Building Component libraries with TSDX and Tailwind
+](https://frontend.blog/build-your-own-flexible-component-library-using-tsdx-typescript-tailwind-css-headless-ui/)
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
 
