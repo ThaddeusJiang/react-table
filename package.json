@@ -64,6 +64,7 @@
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.4",
     "cssnano": "^5.1.7",
+    "daisyui": "^2.13.6",
     "husky": "^7.0.4",
     "jest-environment-jsdom-sixteen": "^2.0.0",
     "postcss": "^8.4.12",

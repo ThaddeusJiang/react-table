@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import React from 'react';
 import DataTable from './DataTable';
 
-import { MockMembers, MockMembersTableColumns } from '../data/mocks';
+import { MockMembers, MockMembersTableColumns } from '../../data/mocks';
 
 describe('components/DataTable', () => {
   test('should render 2 rows and 5 columns', () => {

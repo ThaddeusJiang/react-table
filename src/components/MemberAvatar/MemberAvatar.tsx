@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Member } from '../data/interfaces';
+import { Member } from '../../data/interfaces';
 
 type MemberAvatarProps = {
   member: Member;

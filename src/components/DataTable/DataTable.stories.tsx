@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import MemberAvatar from '../MemberAvatar/MemberAvatar';
-import { Member } from '../data/interfaces';
-import { MockMembers, MockMembersTableColumns } from '../data/mocks';
+import { Member } from '../../data/interfaces';
 
 import DataTable from './DataTable';
+
+import { MockMembers, MockMembersTableColumns } from '../../data/mocks';
 
 export default {
   title: 'components/DataTable',
