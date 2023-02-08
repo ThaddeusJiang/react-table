@@ -43,7 +43,7 @@ export const MockMembersColumns = [
     accessorKey: 'visits',
   },
   {
-    header: 'Member Status',
+    header: 'Status',
     accessorKey: 'status',
   },
   {

@@ -79,7 +79,8 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "@tanstack/react-table": "^8.7.0"
+    "@tanstack/react-table": "^8.7.0",
+    "tailwind-merge": "^1.9.1"
   },
   "homepage": "https://github.com/ThaddeusJiang/react-table#readme",
   "repository": {

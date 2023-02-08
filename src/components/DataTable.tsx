@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import {
   ColumnDef,
@@ -15,7 +16,9 @@ type DataTableProps<T> = {
   sort?: Sort;
   onSortChange?: (value: Sort) => void;
   bodyClassName?: string;
+  cellClassName?: string;
   Empty?: React.FC;
+  Footer?: React.ReactNode;
 };
 
 const DefaultCell = ({ getValue }: { getValue: () => any }) => (
@@ -33,8 +36,10 @@ export function DataTable<T>({
   columns,
   sort,
   onSortChange,
-  bodyClassName,
+  bodyClassName = '',
+  cellClassName = '',
   Empty = DefaultEmpty,
+  Footer,
 }: DataTableProps<T>) {
   const defaultColumn = useMemo(
     () => ({
@@ -96,8 +101,10 @@ export function DataTable<T>({
                 <div
                   {...{
                     key: header.id,
-                    className:
-                      ' relative w-full items-center px-6 py-3 text-left text-sm font-medium capitalize tracking-wider text-gray-500 hover:bg-gray-100',
+                    className: twMerge(
+                      'relative w-full items-center px-6 py-3 text-left text-sm font-medium capitalize tracking-wider text-gray-500 hover:bg-gray-100',
+                      cellClassName
+                    ),
                     style: {
                       width: header.getSize(),
                     },
@@ -156,8 +163,10 @@ export function DataTable<T>({
                     <div
                       {...{
                         key: cell.id,
-                        className:
+                        className: twMerge(
                           'px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate',
+                          cellClassName
+                        ),
                         style: {
                           width: cell.column.getSize(),
                         },
@@ -171,6 +180,7 @@ export function DataTable<T>({
                   ))}
                 </div>
               ))}
+              {Footer}
             </>
           )}
         </div>
