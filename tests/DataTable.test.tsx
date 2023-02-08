@@ -14,7 +14,7 @@ describe('components/DataTable', () => {
     expect(screen.getByText('Last Name')).toBeInTheDocument();
     expect(screen.getByText('Age')).toBeInTheDocument();
     expect(screen.getByText('Visits')).toBeInTheDocument();
-    expect(screen.getByText('Member Status')).toBeInTheDocument();
+    expect(screen.getByText('Status')).toBeInTheDocument();
     expect(screen.getByText('Progress')).toBeInTheDocument();
 
     expect(screen.getByText('tanner')).toBeInTheDocument();
