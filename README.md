@@ -13,7 +13,7 @@ React Table Component, if you need resize the column, you should use this compon
 - [x] out of box react table component with beautiful style.
 - [x] resize column size of table.
 - [x] automatic animations
-- [x] override bodyClassName and cellClassName
+- [x] override cellClassName
 
 ### 🏠 [Homepage](https://github.com/ThaddeusJiang/react-table/tree/dev/packages/react-table#readme)
 
