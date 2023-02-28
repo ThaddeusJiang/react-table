@@ -49,6 +49,5 @@ export const MockMembersColumns = [
   {
     header: 'Progress',
     accessorKey: 'progress',
-    size: 200,
   },
 ];

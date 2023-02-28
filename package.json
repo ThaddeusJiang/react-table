@@ -1,7 +1,7 @@
 {
   "name": "@thaddeusjiang/react-table",
   "author": "ThaddeusJiang",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -18,7 +18,7 @@
     "prepare": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6007",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {

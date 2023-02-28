@@ -15,7 +15,6 @@ type DataTableProps<T> = {
   columns: ColumnDef<T, string>[];
   sort?: Sort;
   onSortChange?: (value: Sort) => void;
-  bodyClassName?: string;
   cellClassName?: string;
   Empty?: React.FC;
   Footer?: React.ReactNode;
@@ -36,7 +35,6 @@ export function DataTable<T>({
   columns,
   sort,
   onSortChange,
-  bodyClassName = '',
   cellClassName = '',
   Empty = DefaultEmpty,
   Footer,
@@ -44,7 +42,6 @@ export function DataTable<T>({
   const defaultColumn = useMemo(
     () => ({
       minSize: 30,
-      size: 150,
       cell: DefaultCell,
     }),
     []
@@ -79,36 +76,22 @@ export function DataTable<T>({
   return (
     <div className="max-w-full overflow-x-auto">
       {/* table */}
-      <div
-        {...{
-          className: 'w-full rounded border align-middle ',
-          // FIXME: some issue, https://tanstack.com/table/v8/docs/examples/react/full-width-resizable-table
-          style: {
-            width: table.getTotalSize(),
-          },
-        }}
-      >
+      <div className={'w-full rounded border align-middle bg-inherit'}>
         {/* thead */}
         <div className="border-b border-gray-200 ">
           {table.getHeaderGroups().map((headerGroup) => (
             <div
-              {...{
-                key: headerGroup.id,
-                className: 'flex divide-x divide-gray-200',
-              }}
+              key={headerGroup.id}
+              className={'flex divide-x divide-gray-200'}
             >
               {headerGroup.headers.map((header) => (
                 <div
-                  {...{
-                    key: header.id,
-                    className: twMerge(
-                      'relative w-full items-center px-6 py-3 text-left text-sm font-medium capitalize tracking-wider text-gray-500 hover:bg-gray-100',
-                      cellClassName
-                    ),
-                    style: {
-                      width: header.getSize(),
-                    },
-                  }}
+                  key={header.id}
+                  className={twMerge(
+                    'relative w-full items-center px-6 py-3 text-left text-sm font-medium capitalize tracking-wider text-gray-500 hover:bg-gray-100',
+                    cellClassName
+                  )}
+                  style={{ position: 'relative', width: header.getSize() }}
                   onClick={() => handleSortChange(header.id)}
                   role="button"
                   tabIndex={0}
@@ -127,50 +110,39 @@ export function DataTable<T>({
                       </span>
                     )}
                   </div>
-                  <div
-                    {...{
-                      onMouseDown: header.getResizeHandler(),
-                      onTouchStart: header.getResizeHandler(),
-                      className: `absolute right-0 top-0 z-10 inline-block h-full w-1 hover:bg-red-400 cursor-col-resize ${
+                  {header.column.getCanResize() ? (
+                    <div
+                      onMouseDown={header.getResizeHandler()}
+                      onTouchStart={header.getResizeHandler()}
+                      className={`absolute right-0 top-0 z-10 inline-block h-full w-1 hover:bg-red-400 cursor-col-resize ${
                         header.column.getIsResizing() ? 'shadow' : ''
-                      }`,
-                    }}
-                  />
+                      }`}
+                    />
+                  ) : null}
                 </div>
               ))}
             </div>
           ))}
         </div>
         {/* tbody */}
-        <div
-          {...{
-            className: bodyClassName,
-          }}
-        >
+        <div>
           {rows.length === 0 ? (
             <Empty />
           ) : (
             <>
               {rows.map((row) => (
                 <div
-                  {...{
-                    key: row.id,
-                    className:
-                      'flex group border-b last:border-b-0 hover:bg-gray-100',
-                  }}
+                  key={row.id}
+                  className="flex group border-b last:border-b-0 hover:bg-gray-100"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <div
-                      {...{
-                        key: cell.id,
-                        className: twMerge(
-                          'px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate',
-                          cellClassName
-                        ),
-                        style: {
-                          width: cell.column.getSize(),
-                        },
-                      }}
+                      key={cell.id}
+                      className={twMerge(
+                        'px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate',
+                        cellClassName
+                      )}
+                      style={{ width: cell.column.getSize() }}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -180,6 +152,7 @@ export function DataTable<T>({
                   ))}
                 </div>
               ))}
+              {/* footer */}
               {Footer}
             </>
           )}
